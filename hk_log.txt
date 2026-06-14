@@ -1,0 +1,9 @@
+date : 12th June 2026
+
+RISC-V RV32I base instructions based 5 stage processor design has been started.
+
+date : 14th June 2026
+
+High level Architecture document has been designed and created.
+working on the developement of the RTL today.
+
