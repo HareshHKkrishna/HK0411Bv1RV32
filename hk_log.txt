@@ -1,9 +1,36 @@
 date : 12th June 2026
 
-RISC-V RV32I base instructions based 5 stage processor design has been started.
+Design Documetation of RISC-V RV32I base instructions based 5 stage processor design has been started.
+
+EOD;
 
 date : 14th June 2026
 
 High level Architecture document has been designed and created.
-working on the developement of the RTL today.
+Planning to work on the developement of the RTL today.
+
+6:49 PM :  Github repo has been created and linked with my working system.
+
+Moving on with understanding the specification document once more before starting to design.
+
+
+9:59 PM : Documentation understanding upto 12th Chapter has been completed.
+
+EOD;
+
+
+
+Date : 15th June 2026
+
+Planning to design the following :
+
+Time : 8:40 AM. Target Time : 4 hours
+
+    ___________________________________
+   |    Design      |   Test Bench    |
+   |________________|_________________|
+   |   alu.sv       |   alu_tb.sv     |
+   |   regfile.sv   |   regfile_tb.sv |
+   |   imm_gen.sv   |   imm_gen_tb.sv |
+   |________________|_________________| 
 

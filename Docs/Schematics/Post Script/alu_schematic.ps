@@ -1,0 +1,1320 @@
+%!PS-Adobe-3.0
+%%Creator: Nlview
+%%For: user19
+%%Title: root
+%%BoundingBox: 28 28 568 814
+%%CreationDate: 2026-06-16 11:40
+%%Pages: (atend)
+%%DocumentData: Clean7Bit
+%%DocumentNeededResources: font Helvetica
+%%EndComments
+
+%%BeginProlog
+50 dict begin
+/line {
+    newpath moveto lineto stroke
+} bind def
+/circle {
+    newpath 2 div 0 360 arc stroke
+} bind def
+/filledcircle {
+    newpath 2 div 0 360 arc fill
+} bind def
+/text {                                 % stack: x y rot jx jy len (str)
+    gsave
+    7 -2 roll moveto                    % stack: rot jx jy len (str)
+    dup stringwidth pop /wid exch def   % string width --> wid
+    5 -1 roll                           % stack: jx jy len (str) rot
+    rotate
+    4 2 roll                            % stack: len (str) jx jy
+    Fdescent exch
+    2 div Fdescent Fascent add mul sub  % desc - jy/2 * (asc+desc)
+                                        % stack: len (str) jx ymove
+    exch
+    2 div wid mul neg                   % -jx/2 * wid
+                                        % stack: len (str) ymove xmove
+    exch rmoveto                        % stack: len (str)
+    exch 0 exch                         % stack: (str) 0 len
+    getinterval                         % stack: substr(str,0,len)
+    show                                % stack:
+    grestore
+} bind def
+/initfontfac {
+    currentdict /Ffac known not {
+        % Here we compute Ffac. Ffac is used below to resize the font
+        % in a way that the font's ascent+descent/2 fits the required
+        % text size. We compute Ffac only once, because the font F will
+        % never change.
+        %
+        dup F exch scalefont setfont % stack sz font
+        gsave
+        newpath 0 0 moveto (XTgq) false charpath
+        pathbbox                        % stack: sz l b r t
+        grestore
+        3 2 roll neg 2 div add          % fheight = ascent + descent/2
+        3 1 roll pop pop                % stack: sz fheight
+        div
+        /Ffac exch def                  % Ffac = sz/fheight
+    } if
+} bind def
+/textsize {
+    Ffac mul F exch scalefont setfont
+    gsave
+    newpath
+    0 0 moveto (XTgq) false charpath pathbbox
+    /Fascent exch def			% top -> ascent
+    pop
+    /Fdescent exch neg 2 div def	% -bottom/2 -> descent
+    pop
+    grestore
+} bind def
+/linestyle {
+				% stack: [dashdef] offs gwid
+    dup 3 1 roll		%        [dashdef] gwid offs gwid
+    mul [			%        [dashdef] gwid moffs [
+    4 -2 roll exch		%        moffs [ gwid [dashdef]
+    {exch dup 3 -1 roll mul exch} forall
+    				%	 moffs [ a1 a2 a3 .. gwid
+    pop ]			%	 moffs [a1 a2 a3..]
+    exch			%	 [a1 a2 a3..] moffs
+    setdash			% stack:
+} bind def
+
+% Define the array ISOLatin1Encoding (which specifies how characters are
+% encoded for ISO-8859-1 fonts), if it isn't already present (Postscript
+% level 2 is supposed to define it, but level 1 doesn't).
+systemdict /ISOLatin1Encoding known not {
+    /ISOLatin1Encoding [
+	/space /space /space /space /space /space /space /space
+	/space /space /space /space /space /space /space /space
+	/space /space /space /space /space /space /space /space
+	/space /space /space /space /space /space /space /space
+	/space /exclam /quotedbl /numbersign /dollar /percent /ampersand
+	    /quoteright
+	/parenleft /parenright /asterisk /plus /comma /minus /period /slash
+	/zero /one /two /three /four /five /six /seven
+	/eight /nine /colon /semicolon /less /equal /greater /question
+	/at /A /B /C /D /E /F /G
+	/H /I /J /K /L /M /N /O
+	/P /Q /R /S /T /U /V /W
+	/X /Y /Z /bracketleft /backslash /bracketright /asciicircum
+	/underscore /quoteleft /a /b /c /d /e /f /g
+	/h /i /j /k /l /m /n /o
+	/p /q /r /s /t /u /v /w
+	/x /y /z /braceleft /bar /braceright /asciitilde /space
+	/space /space /space /space /space /space /space /space
+	/space /space /space /space /space /space /space /space
+	/dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent
+	/dieresis /space /ring /cedilla /space /hungarumlaut /ogonek /caron
+	/space /exclamdown /cent /sterling /currency /yen /brokenbar /section
+	/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen
+	    /registered /macron
+	/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph
+	    /periodcentered
+	/cedillar /onesuperior /ordmasculine /guillemotright /onequarter
+	    /onehalf /threequarters /questiondown
+	/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+	/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex
+	    /Idieresis
+	/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis
+	    /multiply
+	/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn
+	    /germandbls
+	/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
+	/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex
+	    /idieresis
+	/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
+	/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn
+	    /ydieresis
+    ] def
+} if
+
+% font ISOEncode font
+% This procedure changes the encoding of a font from the default
+% Postscript encoding to ISOLatin1. The body of this procedure comes
+% from Section 5.6.1 of the Postscript book.
+/ISOEncode {
+    dup length dict begin
+	{1 index /FID ne {def} {pop pop} ifelse} forall
+	/Encoding ISOLatin1Encoding def
+	currentdict
+    end
+    /Fname exch definefont
+} bind def
+%%EndProlog
+
+%%BeginSetup
+%%IncludeResource: font Helvetica
+<< /PageSize [595 841] /Policies << /PageSize 3 >> >> setpagedevice
+%%EndSetup
+
+/DiagonalCross <<      % pattern prototype dictionary: XX
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       newpath -1 3 moveto
+       5 9 lineto
+       stroke newpath -1 5 moveto
+       5 -1 lineto
+       stroke newpath 3 -1 moveto
+       9 5 lineto
+       stroke newpath 3 9 moveto
+       9 3 lineto
+       stroke
+    } bind
+>> def
+/Cross <<              % pattern prototype dictionary: ++
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       0 4 moveto
+       8 4 lineto
+       4 0 moveto
+       4 8 lineto
+       stroke
+    } bind
+>> def
+/BackwardDiagonal <<   % pattern prototype dictionary: //
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       newpath -1 3 moveto
+       6 6 rlineto
+       stroke newpath 3 -1 moveto
+       6 6 rlineto
+       stroke
+    } bind
+>> def
+/ForwardDiagonal <<    % pattern prototype dictionary: \\
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       newpath -1 5 moveto
+       6 -6 rlineto
+       stroke newpath 3 9 moveto
+       6 -6 rlineto
+       stroke
+    } bind
+>> def
+/Vertical <<           % pattern prototype dictionary: ||
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       4 0 moveto
+       4 8 lineto
+       stroke
+    } bind
+>> def
+/Horizontal <<         % pattern prototype dictionary: ==
+   /PatternType 1      % Tiling pattern
+   /PaintType 2        % uncolored tiling pattern
+   /TilingType 1
+   /BBox [0 0 8 8]
+   /XStep 8
+   /YStep 8
+   /PaintProc
+     { pop
+       1 setlinewidth
+       [] 0 setdash
+       0 4 moveto
+       8 4 lineto
+       stroke
+    } bind
+>> def
+%%Page: 1 1
+%%PageOrientation: Landscape
+save
+90 rotate
+0 -841.89 translate
+27.8 274.39 786.3 539.7 rectclip
+/F /Helvetica findfont ISOEncode def
+12 initfontfac
+0 setlinecap 		% Butt caps (flat)
+0 setlinejoin		% Miter joins
+[/Pattern /DeviceRGB] setcolorspace
+0.000 0.000 0.000 setrgbcolor
+28.9 274.99 784.2 538.1 rectfill
+69.2 762.89 newpath moveto
+772.9 762.89 lineto
+772.9 762.89 lineto
+773.2 762.89 lineto
+773.6 762.89 lineto
+773.9 762.89 lineto
+774.3 762.79 lineto
+774.6 762.69 lineto
+774.9 762.59 lineto
+775.2 762.49 lineto
+775.4 762.39 lineto
+775.8 762.19 lineto
+776 762.09 lineto
+776.3 761.89 lineto
+776.5 761.69 lineto
+776.8 761.39 lineto
+777 761.19 lineto
+777.2 760.99 lineto
+777.4 760.79 lineto
+777.6 760.49 lineto
+777.8 760.19 lineto
+777.9 759.89 lineto
+778.1 759.59 lineto
+778.2 759.29 lineto
+778.3 758.99 lineto
+778.4 758.59 lineto
+778.4 758.39 lineto
+778.5 757.99 lineto
+778.5 757.69 lineto
+778.5 757.39 lineto
+778.5 757.39 lineto
+778.5 372.89 lineto
+778.5 372.89 lineto
+778.5 372.59 lineto
+778.5 372.29 lineto
+778.4 371.89 lineto
+778.4 371.59 lineto
+778.3 371.29 lineto
+778.2 370.99 lineto
+778.1 370.69 lineto
+777.9 370.29 lineto
+777.8 370.09 lineto
+777.6 369.79 lineto
+777.4 369.49 lineto
+777.2 369.19 lineto
+777 368.99 lineto
+776.8 368.79 lineto
+776.6 368.59 lineto
+776.3 368.39 lineto
+776 368.19 lineto
+775.7 367.99 lineto
+775.5 367.89 lineto
+775.1 367.69 lineto
+774.8 367.59 lineto
+774.5 367.49 lineto
+774.3 367.49 lineto
+773.9 367.39 lineto
+773.6 367.29 lineto
+773.2 367.29 lineto
+772.9 367.29 lineto
+772.9 367.29 lineto
+69.2 367.29 lineto
+69.2 367.29 lineto
+68.9 367.29 lineto
+68.5 367.29 lineto
+68.1 367.39 lineto
+67.8 367.49 lineto
+67.6 367.49 lineto
+67.3 367.59 lineto
+67 367.69 lineto
+66.6 367.89 lineto
+66.4 367.99 lineto
+66.1 368.19 lineto
+65.8 368.39 lineto
+65.5 368.59 lineto
+65.3 368.79 lineto
+65.1 368.99 lineto
+64.9 369.19 lineto
+64.7 369.49 lineto
+64.5 369.79 lineto
+64.3 370.09 lineto
+64.2 370.29 lineto
+64 370.69 lineto
+63.9 370.99 lineto
+63.8 371.19 lineto
+63.7 371.59 lineto
+63.7 371.89 lineto
+63.6 372.29 lineto
+63.6 372.59 lineto
+63.6 372.89 lineto
+63.6 372.89 lineto
+63.6 757.39 lineto
+63.6 757.39 lineto
+63.6 757.69 lineto
+63.6 757.99 lineto
+63.7 758.39 lineto
+63.7 758.59 lineto
+63.8 758.99 lineto
+63.9 759.29 lineto
+64 759.59 lineto
+64.2 759.89 lineto
+64.3 760.19 lineto
+64.5 760.49 lineto
+64.7 760.79 lineto
+64.9 760.99 lineto
+65.1 761.29 lineto
+65.3 761.49 lineto
+65.6 761.69 lineto
+65.8 761.89 lineto
+66.1 762.09 lineto
+66.3 762.19 lineto
+66.7 762.39 lineto
+66.9 762.49 lineto
+67.2 762.59 lineto
+67.5 762.69 lineto
+67.8 762.79 lineto
+68.2 762.89 lineto
+68.5 762.89 lineto
+68.9 762.89 lineto
+closepath
+fill
+0.4 setlinewidth
+0.000 1.000 1.000 setrgbcolor
+69.2 762.89 772.9 762.89 line
+773.043 757.434 5.45766 91 0 newpath arcn stroke
+778.5 757.39 778.5 372.89 line
+772.976 372.814 5.52464 1 -91 newpath arcn stroke
+772.9 367.29 69.2 367.29 line
+69.1241 372.814 5.52464 271 179 newpath arcn stroke
+63.6 372.89 63.6 757.39 line
+69.0575 757.434 5.45766 180 89 newpath arcn stroke
+8.32885 textsize
+421 764.29 0 1 0 14 (simulator::alu) text
+421 365.89 0 1 2 15 (alu worklib\(sv\)) text
+1.2 setlinewidth
+56.6 603.29 63.6 603.29 line
+56.6 672.69 63.6 672.69 line
+56.6 617.19 63.6 617.19 line
+785.4 492.19 778.5 492.19 line
+70.5 603.29 63.6 603.29 line
+6.94071 textsize
+65 604.69 0 0 0 7 (a[31:0]) text
+70.5 672.69 63.6 672.69 line
+65 674.09 0 0 0 7 (b[31:0]) text
+70.5 617.19 63.6 617.19 line
+65 618.59 0 0 0 16 (alu_control[3:0]) text
+771.5 492.19 778.5 492.19 line
+777.1 493.59 0 2 0 12 (result[31:0]) text
+0.000 0.000 0.000 setrgbcolor
+417.6 464.49 newpath moveto
+417.6 454.09 lineto
+435 454.09 lineto
+435 454.09 lineto
+435.7 454.09 lineto
+436.3 454.19 lineto
+436.7 454.19 lineto
+437.4 454.39 lineto
+438.2 454.59 lineto
+438.5 454.69 lineto
+439.2 454.99 lineto
+439.8 455.29 lineto
+440.3 455.59 lineto
+441 455.99 lineto
+441.4 456.29 lineto
+441.8 456.59 lineto
+442.4 457.19 lineto
+442.8 457.69 lineto
+443.1 457.99 lineto
+443.6 458.69 lineto
+443.8 458.99 lineto
+444.2 459.79 lineto
+444.4 460.09 lineto
+444.7 460.79 lineto
+444.9 461.39 lineto
+445.1 462.09 lineto
+445.2 462.59 lineto
+445.3 463.39 lineto
+445.4 463.99 lineto
+445.4 464.49 lineto
+445.4 464.99 lineto
+445.3 465.59 lineto
+445.2 466.39 lineto
+445.1 466.89 lineto
+444.9 467.59 lineto
+444.7 468.19 lineto
+444.4 468.89 lineto
+444.2 469.19 lineto
+443.8 469.99 lineto
+443.6 470.29 lineto
+443.1 470.99 lineto
+442.8 471.29 lineto
+442.4 471.79 lineto
+441.8 472.39 lineto
+441.4 472.69 lineto
+441 472.99 lineto
+440.3 473.39 lineto
+439.8 473.69 lineto
+439.2 473.99 lineto
+438.5 474.29 lineto
+438.2 474.39 lineto
+437.4 474.59 lineto
+436.7 474.79 lineto
+436.3 474.79 lineto
+435.7 474.89 lineto
+435 474.89 lineto
+435 474.89 lineto
+417.6 474.89 lineto
+closepath
+fill
+0.000 1.000 1.000 setrgbcolor
+0.4 setlinewidth
+0.000 1.000 0.000 setrgbcolor
+417.6 464.49 newpath moveto
+417.6 454.09 lineto
+435 454.09 lineto
+stroke
+435.011 464.49 10.4 -90 90 newpath arc stroke
+435 474.89 newpath moveto
+417.6 474.89 lineto
+417.6 464.49 lineto
+stroke
+452.3 464.49 445.4 464.49 line
+1.2 setlinewidth
+410.6 471.39 417.6 471.39 line
+416.9 472.09 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 457.49 417.6 457.49 line
+416.9 458.29 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 637.99 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 637.99 27.7 circle
+445.4 637.99 445.4 637.99 line
+417.6 644.89 419 644.19 line
+417.6 631.09 419 631.79 line
+8.32885 textsize
+431.5 637.99 0 1 1 1 (+) text
+452.3 637.99 445.4 637.99 line
+1.2 setlinewidth
+410.6 644.89 417.6 644.89 line
+6.94071 textsize
+416.2 645.59 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 630.99 417.6 630.99 line
+416.2 631.79 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 395.09 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 395.09 27.7 circle
+445.4 395.09 445.4 395.09 line
+8.32885 textsize
+431.5 395.09 0 1 1 4 (init) text
+452.3 395.09 445.4 395.09 line
+6.94071 textsize
+446.8 395.79 0 0 0 3 (\(0\)) text
+0.000 0.000 0.000 setrgbcolor
+431.5 742.09 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+431.5 742.09 27.7 circle
+445.4 742.09 445.4 742.09 line
+417.6 748.99 419 748.29 line
+417.6 735.19 419 735.89 line
+8.32885 textsize
+431.5 742.09 0 1 1 2 (<<) text
+452.3 742.09 445.4 742.09 line
+1.2 setlinewidth
+410.6 748.99 417.6 748.99 line
+6.94071 textsize
+416.2 749.69 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 735.19 417.6 735.19 line
+416.2 735.89 0 2 0 9 (b[4:0]=zz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 707.39 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 707.39 27.7 circle
+417.6 714.29 419 713.59 line
+417.6 700.49 419 701.19 line
+445.4 707.39 445.4 707.39 line
+8.32885 textsize
+431.5 707.39 0 1 1 1 (<) text
+410.6 714.29 417.6 714.29 line
+410.6 700.49 417.6 700.49 line
+452.3 707.39 445.4 707.39 line
+0.000 0.000 0.000 setrgbcolor
+431.5 672.69 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+431.5 672.69 27.7 circle
+445.4 672.69 445.4 672.69 line
+417.6 679.59 419 678.89 line
+417.6 665.79 419 666.49 line
+431.5 672.69 0 1 1 1 (<) text
+452.3 672.69 445.4 672.69 line
+1.2 setlinewidth
+410.6 679.59 417.6 679.59 line
+6.94071 textsize
+416.2 680.29 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 665.69 417.6 665.69 line
+416.2 666.49 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+618.8 610.19 newpath moveto
+646.6 599.79 lineto
+646.6 384.59 lineto
+618.8 374.19 lineto
+closepath
+fill
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+618.8 610.19 newpath moveto
+646.6 599.79 lineto
+646.6 384.59 lineto
+618.8 374.19 lineto
+closepath
+stroke
+611.9 596.29 618.8 596.29 line
+611.9 582.49 618.8 582.49 line
+611.9 568.59 618.8 568.59 line
+611.9 554.69 618.8 554.69 line
+611.9 540.79 618.8 540.79 line
+611.9 526.89 618.8 526.89 line
+611.9 513.09 618.8 513.09 line
+611.9 499.19 618.8 499.19 line
+611.9 485.29 618.8 485.29 line
+611.9 471.39 618.8 471.39 line
+611.9 457.49 618.8 457.49 line
+617.4 458.19 0 2 0 3 (\(0\)) text
+611.9 443.59 618.8 443.59 line
+617.4 444.29 0 2 0 3 (\(0\)) text
+611.9 429.79 618.8 429.79 line
+617.4 430.39 0 2 0 3 (\(0\)) text
+611.9 415.89 618.8 415.89 line
+617.4 416.49 0 2 0 3 (\(0\)) text
+611.9 401.99 618.8 401.99 line
+617.4 402.69 0 2 0 3 (\(0\)) text
+1.2 setlinewidth
+632.7 610.19 632.7 604.59 line
+631.3 610.19 0 2 0 18 (alu_control[3:0]=z) text
+611.9 388.09 618.8 388.09 line
+617.4 388.79 0 2 0 16 (a[31:0]=zzzzzzzz) text
+1.000 0.000 0.000 setrgbcolor
+653.5 492.19 646.6 492.19 line
+648 492.89 0 0 0 21 (result[31:0]=xxxxxxxx) text
+0.000 0.000 0.000 setrgbcolor
+417.6 433.19 newpath moveto
+418.1 432.79 lineto
+418.8 432.09 lineto
+419.2 431.59 lineto
+419.9 430.69 lineto
+420.2 430.29 lineto
+420.8 429.29 lineto
+421.1 428.69 lineto
+421.4 427.99 lineto
+421.7 427.19 lineto
+422 426.29 lineto
+422.2 425.49 lineto
+422.3 424.99 lineto
+422.4 424.19 lineto
+422.5 423.19 lineto
+422.5 422.39 lineto
+422.4 421.39 lineto
+422.3 420.59 lineto
+422.2 420.09 lineto
+422 419.29 lineto
+421.7 418.39 lineto
+421.4 417.59 lineto
+421.1 416.89 lineto
+420.8 416.29 lineto
+420.2 415.29 lineto
+419.9 414.89 lineto
+419.2 413.99 lineto
+418.8 413.49 lineto
+418.1 412.79 lineto
+417.6 412.39 lineto
+417.6 412.39 lineto
+428 412.39 lineto
+428 412.39 lineto
+429.4 412.49 lineto
+430.8 412.79 lineto
+431.9 412.99 lineto
+433.5 413.49 lineto
+434.8 413.99 lineto
+436.3 414.69 lineto
+437.3 415.19 lineto
+438.5 415.89 lineto
+439.7 416.69 lineto
+440.6 417.39 lineto
+441.8 418.49 lineto
+442.8 419.49 lineto
+443.7 420.49 lineto
+444.4 421.39 lineto
+445.4 422.79 lineto
+445.4 422.79 lineto
+444.4 424.19 lineto
+443.7 425.09 lineto
+442.8 426.09 lineto
+441.8 427.09 lineto
+440.6 428.19 lineto
+439.7 428.89 lineto
+438.5 429.69 lineto
+437.3 430.39 lineto
+436.3 430.89 lineto
+434.8 431.59 lineto
+433.5 432.09 lineto
+431.9 432.59 lineto
+430.8 432.79 lineto
+429.4 433.09 lineto
+428 433.19 lineto
+428 433.19 lineto
+closepath
+fill
+1.000 0.000 0.000 setrgbcolor
+0.4 setlinewidth
+0.000 1.000 0.000 setrgbcolor
+408.898 422.79 13.5603 50 -50 newpath arcn stroke
+417.6 412.39 428 412.39 line
+426.275 435.032 22.7075 -86 -33 newpath arc stroke
+426.275 410.548 22.7075 33 86 newpath arc stroke
+428 433.19 417.6 433.19 line
+452.3 422.79 445.4 422.79 line
+1.2 setlinewidth
+410.6 415.89 420.4 415.89 line
+416.9 416.59 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 429.79 420.4 429.79 line
+416.9 430.39 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 561.59 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 561.59 27.7 circle
+445.4 561.59 445.4 561.59 line
+417.6 568.49 419 567.79 line
+417.6 554.69 419 555.39 line
+8.32885 textsize
+431.5 561.59 0 1 1 2 (>>) text
+452.3 561.59 445.4 561.59 line
+1.2 setlinewidth
+410.6 568.59 417.6 568.59 line
+6.94071 textsize
+416.2 569.19 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 554.69 417.6 554.69 line
+416.2 555.39 0 2 0 9 (b[4:0]=zz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 499.19 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 499.19 27.7 circle
+417.6 506.09 419 505.39 line
+445.4 499.19 445.4 499.19 line
+417.6 492.29 419 492.99 line
+8.32885 textsize
+431.5 499.19 0 1 1 2 (>>) text
+410.6 506.09 417.6 506.09 line
+452.3 499.19 445.4 499.19 line
+1.2 setlinewidth
+410.6 492.19 417.6 492.19 line
+6.94071 textsize
+416.2 492.99 0 2 0 9 (b[4:0]=zz) text
+0.000 0.000 0.000 setrgbcolor
+431.5 596.29 27.7 filledcircle
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+431.5 596.29 27.7 circle
+445.4 596.29 445.4 596.29 line
+417.6 603.19 419 602.49 line
+417.6 589.39 419 590.09 line
+8.32885 textsize
+431.5 596.29 0 1 1 1 (-) text
+452.3 596.29 445.4 596.29 line
+1.2 setlinewidth
+410.6 603.29 417.6 603.29 line
+6.94071 textsize
+416.2 603.89 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 589.39 417.6 589.39 line
+416.2 590.09 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+421.1 537.29 newpath moveto
+421.7 536.79 lineto
+422.3 536.19 lineto
+422.7 535.69 lineto
+423.4 534.79 lineto
+423.7 534.39 lineto
+424.1 533.69 lineto
+424.5 532.99 lineto
+424.9 532.09 lineto
+425.2 531.29 lineto
+425.4 530.69 lineto
+425.6 529.89 lineto
+425.8 528.79 lineto
+425.9 527.99 lineto
+425.9 527.29 lineto
+425.9 526.49 lineto
+425.9 525.79 lineto
+425.8 524.99 lineto
+425.6 523.89 lineto
+425.4 523.09 lineto
+425.2 522.49 lineto
+424.9 521.69 lineto
+424.5 520.79 lineto
+424.1 520.09 lineto
+423.7 519.39 lineto
+423.4 518.99 lineto
+422.7 518.09 lineto
+422.3 517.59 lineto
+421.7 516.99 lineto
+421.1 516.49 lineto
+421.1 516.49 lineto
+428 516.49 lineto
+428 516.49 lineto
+429.4 516.59 lineto
+430.8 516.89 lineto
+431.9 517.09 lineto
+433.5 517.59 lineto
+434.8 518.09 lineto
+436.3 518.79 lineto
+437.3 519.29 lineto
+438.5 519.99 lineto
+439.7 520.79 lineto
+440.6 521.49 lineto
+441.8 522.59 lineto
+442.8 523.59 lineto
+443.7 524.59 lineto
+444.4 525.49 lineto
+445.4 526.89 lineto
+445.4 526.89 lineto
+444.4 528.29 lineto
+443.7 529.19 lineto
+442.8 530.19 lineto
+441.8 531.19 lineto
+440.6 532.29 lineto
+439.7 532.99 lineto
+438.5 533.79 lineto
+437.3 534.49 lineto
+436.3 534.99 lineto
+434.8 535.69 lineto
+433.5 536.19 lineto
+431.9 536.69 lineto
+430.8 536.89 lineto
+429.4 537.19 lineto
+428 537.29 lineto
+428 537.29 lineto
+closepath
+fill
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+408.898 526.89 13.5603 50 -50 newpath arcn stroke
+412.398 526.89 13.5603 50 -50 newpath arcn stroke
+421.1 516.49 428 516.49 line
+426.275 539.132 22.7075 -86 -33 newpath arc stroke
+426.275 514.648 22.7075 33 86 newpath arc stroke
+428 537.29 421.1 537.29 line
+452.3 526.89 445.4 526.89 line
+1.2 setlinewidth
+410.6 533.89 420.4 533.89 line
+416.9 534.49 0 2 0 16 (a[31:0]=zzzzzzzz) text
+410.6 519.99 420.4 519.99 line
+416.9 520.69 0 2 0 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+181.6 700.39 97.2 27.8 rectfill
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+181.6 700.39 97.2 27.8 rectstroke
+8.32885 textsize
+230.2 729.59 0 1 0 20 (signed_SysFunction_0) text
+285.7 714.29 278.8 714.29 line
+1.2 setlinewidth
+174.6 714.29 181.6 714.29 line
+6.94071 textsize
+183 714.29 0 0 1 16 (a[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+181.6 658.79 97.2 27.8 rectfill
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+181.6 658.79 97.2 27.8 rectstroke
+8.32885 textsize
+230.2 687.99 0 1 0 20 (signed_SysFunction_1) text
+285.7 672.69 278.8 672.69 line
+1.2 setlinewidth
+174.6 672.69 181.6 672.69 line
+6.94071 textsize
+183 672.69 0 0 1 16 (b[31:0]=zzzzzzzz) text
+0.000 0.000 0.000 setrgbcolor
+181.6 492.19 97.2 27.8 rectfill
+0.000 1.000 0.000 setrgbcolor
+0.4 setlinewidth
+181.6 492.19 97.2 27.8 rectstroke
+8.32885 textsize
+230.2 521.39 0 1 0 20 (signed_SysFunction_2) text
+285.7 506.09 278.8 506.09 line
+1.2 setlinewidth
+174.6 506.09 181.6 506.09 line
+6.94071 textsize
+183 506.09 0 0 1 16 (a[31:0]=zzzzzzzz) text
+0.400 0.400 0.400 setrgbcolor
+653.5 492.19 771.5 492.19 line
+0.4 setlinewidth
+653.5 492.19 771.5 492.19 line
+452.3 637.99 newpath moveto
+528.6 637.99 lineto
+528.6 596.29 lineto
+611.9 596.29 lineto
+stroke
+452.3 596.29 newpath moveto
+500.8 596.29 lineto
+500.8 582.49 lineto
+611.9 582.49 lineto
+stroke
+452.3 742.09 newpath moveto
+542.5 742.09 lineto
+542.5 568.59 lineto
+611.9 568.59 lineto
+stroke
+452.3 707.39 newpath moveto
+514.7 707.39 lineto
+514.7 554.69 lineto
+611.9 554.69 lineto
+stroke
+285.7 714.29 410.6 714.29 line
+285.7 672.69 newpath moveto
+299.6 672.69 lineto
+299.6 700.49 lineto
+410.6 700.49 lineto
+stroke
+452.3 672.69 newpath moveto
+487 672.69 lineto
+487 540.79 lineto
+611.9 540.79 lineto
+stroke
+452.3 526.89 611.9 526.89 line
+452.3 561.59 newpath moveto
+473.1 561.59 lineto
+473.1 513.09 lineto
+611.9 513.09 lineto
+stroke
+452.3 499.19 611.9 499.19 line
+285.7 506.09 410.6 506.09 line
+452.3 422.79 newpath moveto
+500.8 422.79 lineto
+500.8 485.29 lineto
+611.9 485.29 lineto
+stroke
+452.3 464.49 newpath moveto
+528.6 464.49 lineto
+528.6 471.39 lineto
+611.9 471.39 lineto
+stroke
+1.2 setlinewidth
+174.6 714.29 newpath moveto
+133 714.29 lineto
+133 506.09 lineto
+174.6 506.09 lineto
+stroke
+70.5 603.29 133 603.29 line
+133 582.49 341.2 582.49 line
+341.2 568.59 410.6 568.59 line
+341.2 533.89 410.6 533.89 line
+341.2 471.39 410.6 471.39 line
+341.2 443.59 newpath moveto
+473.1 443.59 lineto
+473.1 388.09 lineto
+611.9 388.09 lineto
+stroke
+131.8 602.09 2.4 2.4 rectfill
+131.8 581.29 2.4 2.4 rectfill
+410.6 748.99 newpath moveto
+341.2 748.99 lineto
+341.2 415.89 lineto
+410.6 415.89 lineto
+stroke
+341.2 679.59 410.6 679.59 line
+341.2 644.89 410.6 644.89 line
+341.2 603.29 410.6 603.29 line
+340 678.39 2.4 2.4 rectfill
+340 643.69 2.4 2.4 rectfill
+340 602.09 2.4 2.4 rectfill
+340 581.29 2.4 2.4 rectfill
+340 567.39 2.4 2.4 rectfill
+340 532.69 2.4 2.4 rectfill
+340 470.19 2.4 2.4 rectfill
+340 442.39 2.4 2.4 rectfill
+0.4 setlinewidth
+174.6 714.29 newpath moveto
+133 714.29 lineto
+133 506.09 lineto
+174.6 506.09 lineto
+stroke
+70.5 603.29 133 603.29 line
+133 582.49 341.2 582.49 line
+341.2 568.59 410.6 568.59 line
+341.2 533.89 410.6 533.89 line
+341.2 471.39 410.6 471.39 line
+341.2 443.59 newpath moveto
+473.1 443.59 lineto
+473.1 388.09 lineto
+611.9 388.09 lineto
+stroke
+410.6 748.99 newpath moveto
+341.2 748.99 lineto
+341.2 415.89 lineto
+410.6 415.89 lineto
+stroke
+341.2 679.59 410.6 679.59 line
+341.2 644.89 410.6 644.89 line
+341.2 603.29 410.6 603.29 line
+1.2 setlinewidth
+70.5 617.19 newpath moveto
+473.1 617.19 lineto
+473.1 624.09 lineto
+632.7 624.09 lineto
+632.7 610.19 lineto
+stroke
+0.4 setlinewidth
+70.5 617.19 newpath moveto
+473.1 617.19 lineto
+473.1 624.09 lineto
+632.7 624.09 lineto
+632.7 610.19 lineto
+stroke
+1.2 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+70.5 672.69 newpath moveto
+157.3 672.69 lineto
+157.4 672.59 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+157.3 672.69 160.8 669.19 line
+0.400 0.400 0.400 setrgbcolor
+160.8 669.19 newpath moveto
+160.8 651.89 lineto
+327.3 651.89 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+327.3 634.49 newpath moveto
+330.8 630.99 lineto
+330.9 630.99 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 630.99 410.6 630.99 line
+0.000 0.820 0.820 setrgbcolor
+327.3 592.89 newpath moveto
+330.8 589.39 lineto
+330.9 589.39 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 589.39 410.6 589.39 line
+0.400 0.400 0.400 setrgbcolor
+327.3 554.69 410.6 554.69 line
+0.000 0.820 0.820 setrgbcolor
+327.3 523.49 newpath moveto
+330.8 519.99 lineto
+330.9 519.99 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 519.99 410.6 519.99 line
+0.400 0.400 0.400 setrgbcolor
+327.3 492.19 410.6 492.19 line
+0.000 0.820 0.820 setrgbcolor
+327.3 460.99 newpath moveto
+330.8 457.49 lineto
+330.9 457.49 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 457.49 410.6 457.49 line
+0.400 0.400 0.400 setrgbcolor
+326.1 650.69 2.4 2.4 rectfill
+326.1 553.49 2.4 2.4 rectfill
+326.1 490.99 2.4 2.4 rectfill
+0.000 0.820 0.820 setrgbcolor
+160.8 669.19 newpath moveto
+164.2 672.69 lineto
+164.3 672.69 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+164.2 672.69 174.6 672.69 line
+0.400 0.400 0.400 setrgbcolor
+410.6 735.19 newpath moveto
+327.3 735.19 lineto
+327.3 433.19 lineto
+330.8 429.79 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+327.3 433.19 newpath moveto
+330.8 429.79 lineto
+330.9 429.79 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 429.79 410.6 429.79 line
+0.000 0.820 0.820 setrgbcolor
+327.3 669.19 newpath moveto
+330.8 665.69 lineto
+330.9 665.69 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+330.8 665.69 410.6 665.69 line
+0.8 setlinewidth
+70.5 672.69 newpath moveto
+157.3 672.69 lineto
+157.4 672.59 lineto
+stroke
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+157.3 672.69 160.8 669.19 line
+0.400 0.400 0.400 setrgbcolor
+160.8 669.19 newpath moveto
+160.8 651.89 lineto
+327.3 651.89 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+327.3 634.49 newpath moveto
+330.8 630.99 lineto
+330.9 630.99 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 630.99 410.6 630.99 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+327.3 592.89 newpath moveto
+330.8 589.39 lineto
+330.9 589.39 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 589.39 410.6 589.39 line
+0.4 setlinewidth
+0.400 0.400 0.400 setrgbcolor
+327.3 554.69 410.6 554.69 line
+0.000 0.820 0.820 setrgbcolor
+327.3 523.49 newpath moveto
+330.8 519.99 lineto
+330.9 519.99 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 519.99 410.6 519.99 line
+0.4 setlinewidth
+0.400 0.400 0.400 setrgbcolor
+327.3 492.19 410.6 492.19 line
+0.000 0.820 0.820 setrgbcolor
+327.3 460.99 newpath moveto
+330.8 457.49 lineto
+330.9 457.49 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 457.49 410.6 457.49 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+160.8 669.19 newpath moveto
+164.2 672.69 lineto
+164.3 672.69 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+164.2 672.69 174.6 672.69 line
+0.4 setlinewidth
+0.400 0.400 0.400 setrgbcolor
+410.6 735.19 newpath moveto
+327.3 735.19 lineto
+327.3 433.19 lineto
+330.8 429.79 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+327.3 433.19 newpath moveto
+330.8 429.79 lineto
+330.9 429.79 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 429.79 410.6 429.79 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+327.3 669.19 newpath moveto
+330.8 665.69 lineto
+330.9 665.69 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+330.8 665.69 410.6 665.69 line
+1.2 setlinewidth
+70.5 672.69 newpath moveto
+143.4 672.69 lineto
+143.5 672.59 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+143.4 672.69 146.9 669.19 line
+0.400 0.400 0.400 setrgbcolor
+146.9 669.19 newpath moveto
+146.9 637.99 lineto
+313.4 637.99 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+313.4 634.49 newpath moveto
+316.9 630.99 lineto
+317 630.99 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+316.9 630.99 410.6 630.99 line
+0.000 0.820 0.820 setrgbcolor
+313.4 592.89 newpath moveto
+316.9 589.39 lineto
+317 589.39 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+316.9 589.39 410.6 589.39 line
+0.000 0.820 0.820 setrgbcolor
+313.4 523.49 newpath moveto
+316.9 519.99 lineto
+317 519.99 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+316.9 519.99 410.6 519.99 line
+0.000 0.820 0.820 setrgbcolor
+313.4 460.99 newpath moveto
+316.9 457.49 lineto
+317 457.49 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+316.9 457.49 410.6 457.49 line
+0.400 0.400 0.400 setrgbcolor
+312.2 636.79 2.4 2.4 rectfill
+0.000 0.820 0.820 setrgbcolor
+146.9 669.19 newpath moveto
+150.3 672.69 lineto
+150.4 672.69 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+150.3 672.69 174.6 672.69 line
+410.6 665.69 newpath moveto
+316.9 665.69 lineto
+313.4 662.29 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+316.9 665.69 newpath moveto
+313.4 662.29 lineto
+313.4 662.19 lineto
+stroke
+0.400 0.400 0.400 setrgbcolor
+313.4 662.29 newpath moveto
+313.4 433.19 lineto
+316.9 429.79 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+313.4 433.19 newpath moveto
+316.9 429.79 lineto
+317 429.79 lineto
+stroke
+0.549 0.549 0.549 setrgbcolor
+316.9 429.79 410.6 429.79 line
+0.8 setlinewidth
+70.5 672.69 newpath moveto
+143.4 672.69 lineto
+143.5 672.59 lineto
+stroke
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+143.4 672.69 146.9 669.19 line
+0.400 0.400 0.400 setrgbcolor
+146.9 669.19 newpath moveto
+146.9 637.99 lineto
+313.4 637.99 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+313.4 634.49 newpath moveto
+316.9 630.99 lineto
+317 630.99 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+316.9 630.99 410.6 630.99 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+313.4 592.89 newpath moveto
+316.9 589.39 lineto
+317 589.39 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+316.9 589.39 410.6 589.39 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+313.4 523.49 newpath moveto
+316.9 519.99 lineto
+317 519.99 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+316.9 519.99 410.6 519.99 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+313.4 460.99 newpath moveto
+316.9 457.49 lineto
+317 457.49 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+316.9 457.49 410.6 457.49 line
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+146.9 669.19 newpath moveto
+150.3 672.69 lineto
+150.4 672.69 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+150.3 672.69 174.6 672.69 line
+410.6 665.69 newpath moveto
+316.9 665.69 lineto
+316.8 665.59 lineto
+stroke
+0.4 setlinewidth
+0.000 0.820 0.820 setrgbcolor
+316.9 665.69 newpath moveto
+313.4 662.29 lineto
+313.4 662.19 lineto
+stroke
+0.400 0.400 0.400 setrgbcolor
+313.4 662.29 newpath moveto
+313.4 433.19 lineto
+316.9 429.79 lineto
+stroke
+0.000 0.820 0.820 setrgbcolor
+313.4 433.19 newpath moveto
+316.9 429.79 lineto
+317 429.79 lineto
+stroke
+0.8 setlinewidth
+0.549 0.549 0.549 setrgbcolor
+316.9 429.79 410.6 429.79 line
+0.4 setlinewidth
+0.400 0.400 0.400 setrgbcolor
+452.3 395.09 newpath moveto
+542.5 395.09 lineto
+542.5 457.49 lineto
+611.9 457.49 lineto
+stroke
+542.5 401.99 611.9 401.99 line
+542.5 415.89 611.9 415.89 line
+542.5 429.79 611.9 429.79 line
+542.5 443.59 611.9 443.59 line
+541.7 401.19 1.6 1.6 rectfill
+541.7 415.09 1.6 1.6 rectfill
+541.7 428.99 1.6 1.6 rectfill
+541.7 442.79 1.6 1.6 rectfill
+restore
+showpage
+%%Trailer
+end
+%%Pages: 1
+%%EOF
