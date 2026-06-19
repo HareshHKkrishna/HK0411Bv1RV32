@@ -45,12 +45,7 @@ always_comb begin
             rs1   = ir[19:15];
         end
 
-        // JALR
-        7'b1100111 : begin
-            rd    = ir[11:7];
-            func3 = ir[14:12];
-            rs1   = ir[19:15];
-        end
+        
 
         // Store
         7'b0100011 : begin
@@ -71,10 +66,7 @@ always_comb begin
             rd = ir[11:7];
         end
 
-        // AUIPC
-        7'b0010111 : begin
-            rd = ir[11:7];
-        end
+       
 
         // JAL
         7'b1101111 : begin
