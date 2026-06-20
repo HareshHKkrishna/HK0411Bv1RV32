@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module instruction_decode (
     input  logic [31:0] ir,
 
@@ -36,6 +37,8 @@ always_comb begin
             rd    = ir[11:7];
             func3 = ir[14:12];
             rs1   = ir[19:15];
+            if (func3 == 3'b001 || func3 == 3'b101)
+                func7 = ir[31:25];
         end
 
         // Load

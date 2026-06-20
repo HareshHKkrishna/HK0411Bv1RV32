@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 typedef enum logic [1:0]{
     WB_ALU,
     WB_MEM,
@@ -11,8 +12,7 @@ typedef enum logic [2:0]{
     ALUOP_RTYPE,
     ALUOP_ITYPE,
     ALUOP_UPPERIMM,
-    ALUOP_JUMP,
-    ALUOP_NOP
+    ALUOP_JUMP
 } aluop_t;
 
 module main_control_unit (
@@ -40,7 +40,7 @@ module main_control_unit (
         ALUSrc   = 1'b0;
 
         WBSelect = WB_ALU;
-        ALUOp    = ALUOP_NOP;
+        ALUOp    = ALUOP_RTYPE;
 
         case(opcode)
 
@@ -101,7 +101,7 @@ module main_control_unit (
             end
 
             default: begin
-                
+
             end
 
         endcase

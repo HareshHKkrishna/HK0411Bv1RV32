@@ -1,11 +1,12 @@
-typedef enum logic [2:0]{
+/*typedef enum logic [2:0]{
     ALUOP_LW_SW,
     ALUOP_BRANCH,
     ALUOP_RTYPE,
     ALUOP_ITYPE,
     ALUOP_UPPERIMM,
     ALUOP_JUMP
-} aluop_t;
+} aluop_t;*/
+
 module alu_control (
     input aluop_t ALUOp,
     input logic [2:0]func3,
@@ -46,13 +47,13 @@ module alu_control (
 
             default: alu_control = 4'b1111;
         endcase
-            if(func3 == 001 && func7==0000000)begin
+            if(func3 == 3'b001 && func7==7'b0000000)begin
                 alu_control = 4'b0010;
             end
-            else if(func3 == 101 && func7==0000000)begin
+            else if(func3 == 3'b101 && func7==7'b0000000)begin
                 alu_control = 4'b0110;
             end
-            else if(func3 == 101 && func7==0100000)begin
+            else if(func3 == 3'b101 && func7==7'b0100000)begin
                 alu_control = 4'b0111;
             end
     end
