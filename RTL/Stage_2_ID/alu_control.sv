@@ -6,7 +6,7 @@
     ALUOP_UPPERIMM,
     ALUOP_JUMP
 } aluop_t;*/
-
+import cpu_types_pkg::*;
 module alu_control (
     input aluop_t ALUOp,
     input logic [2:0]func3,

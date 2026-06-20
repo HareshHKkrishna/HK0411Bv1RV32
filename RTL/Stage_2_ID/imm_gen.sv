@@ -1,4 +1,5 @@
 `timescale 1ns/1ns
+import cpu_types_pkg::*;
 module imm_gen (
 
     input  logic [31:0] ir,

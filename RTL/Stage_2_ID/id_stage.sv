@@ -16,7 +16,7 @@ typedef enum logic [2:0]{
 
 
 */
-
+import cpu_types_pkg::*;
 `timescale 1ns/1ns
 module id_stage (
     input logic [31:0]instr,

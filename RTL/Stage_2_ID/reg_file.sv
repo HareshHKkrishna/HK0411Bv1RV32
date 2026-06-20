@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-
+import cpu_types_pkg::*;
 module reg_file(
     input logic [4:0]rs1,      //read source register 1,
     input logic  [4:0]rs2,     //read source register 2,
