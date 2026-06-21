@@ -27,6 +27,8 @@ module ex_wrapper (
     output logic        branch_taken,
 
     output logic [31:0] rs2_data_mem,
+    output logic [31:0] imm_mem,
+    output logic [31:0] pc4_mem,
     output logic [4:0]  rd_addr_mem,
 
     output logic        RegWrite_mem,
@@ -54,6 +56,8 @@ branch_target_gen branch_target_gen1(.imm(imm_ex),.Jump_ex(Jump_ex),.pc(pc_ex),.
     assign pc_next      = pcnext;
 
     assign rs2_data_mem = rs2_data_ex;
+    assign imm_mem      = imm_ex;
+    assign pc4_mem      = pc4_ex;
     assign rd_addr_mem  = rd_addr_ex;
 
     assign RegWrite_mem = RegWrite_ex;
