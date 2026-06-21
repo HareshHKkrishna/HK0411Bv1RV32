@@ -46,7 +46,7 @@ alu alu1(.a(rs1_data_ex),.b(operandb),.alu_control(alu_control_ex),.result(alu_o
 
 branch_control_unit branch_control_unit1(.rs1_data(rs1_data_ex),.rs2_data(rs2_data_ex),.func3(func3_ex),.branch(Branch_ex),.branch_taken(branchtaken));
 
-branch_target_gen branch_target_gen1(.imm(imm_ex),.pc(pc_ex),.pc4(pc4_ex),.branch_taken(branchtaken),.pc_next(pcnext));
+branch_target_gen branch_target_gen1(.imm(imm_ex),.Jump_ex(Jump_ex),.pc(pc_ex),.pc4(pc4_ex),.branch_taken(branchtaken),.pc_next(pcnext));
 
    //--------------------------------------------------
     assign alu_result   = alu_output;
