@@ -3,7 +3,7 @@ module ex_mem_pipeline (
     input logic clk,
     input logic rst,
     input logic stall,
-    input logic flush,
+
 
     // Data
     input logic [31:0] alu_result,
@@ -11,26 +11,25 @@ module ex_mem_pipeline (
     input logic [4:0]  rd_addr_mem,
 
     // Control
-    input logic        RegWrite_mem,
-    input logic        MemRead_mem,
-    input logic        MemWrite_mem,
-    input wb_select_t  WBSelect_mem,
+    input logic       RegWrite_mem,
+    input logic       MemRead_mem,
+    input logic       MemWrite_mem,
+    input wb_select_t WBSelect_mem,
 
     // Registered Outputs
     output logic [31:0] alu_result_mem_out,
     output logic [31:0] rs2_data_mem_out,
     output logic [4:0]  rd_addr_mem_out,
 
-    output logic        RegWrite_mem_out,
-    output logic        MemRead_mem_out,
-    output logic        MemWrite_mem_out,
-    output wb_select_t  WBSelect_mem_out
-
+    output logic       RegWrite_mem_out,
+    output logic       MemRead_mem_out,
+    output logic       MemWrite_mem_out,
+    output wb_select_t WBSelect_mem_out
 );
 
 always_ff @(posedge clk) begin
 
-    if (rst || flush) begin
+    if (rst) begin
 
         alu_result_mem_out <= 32'd0;
         rs2_data_mem_out   <= 32'd0;
@@ -43,7 +42,6 @@ always_ff @(posedge clk) begin
         WBSelect_mem_out   <= WB_ALU;
 
     end
-
     else if (!stall) begin
 
         alu_result_mem_out <= alu_result;
