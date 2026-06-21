@@ -2,7 +2,6 @@ module ex_mem_pipeline (
 
     input logic clk,
     input logic rst,
-    input logic stall,
 
 
     // Data
