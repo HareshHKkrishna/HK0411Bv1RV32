@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module branch_target_gen (
     input  logic [31:0] imm,
     input  logic [31:0] pc,

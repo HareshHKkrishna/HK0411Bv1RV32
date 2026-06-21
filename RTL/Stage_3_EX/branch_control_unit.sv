@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module branch_control_unit (
     input logic [31:0]rs1_data,
     input logic [31:0]rs2_data,

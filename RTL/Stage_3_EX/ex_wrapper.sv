@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module ex_wrapper (
     // Memory/Data
     input logic [31:0] rs1_data_ex,

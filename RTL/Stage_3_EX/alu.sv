@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module alu (
     input logic [31:0]a,
     input logic [31:0]b,

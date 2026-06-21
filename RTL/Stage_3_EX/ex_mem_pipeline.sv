@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module ex_mem_pipeline (
 
     input logic clk,

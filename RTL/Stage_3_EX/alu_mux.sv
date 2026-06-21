@@ -1,3 +1,4 @@
+import cpu_types_pkg::*;
 module alu_mux(
     input logic ALUSrc,
     input logic [31:0]imm,
