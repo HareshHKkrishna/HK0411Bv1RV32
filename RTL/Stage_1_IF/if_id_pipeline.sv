@@ -1,4 +1,4 @@
-module if_id (
+module if_id_pipeline (
     input  logic        clk,
     input  logic        rst,
     input  logic        stall,

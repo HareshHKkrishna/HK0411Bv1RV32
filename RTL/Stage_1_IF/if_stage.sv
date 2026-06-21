@@ -47,7 +47,7 @@ module if_stage (
     //--------------------------------------------------
     // IF/ID Pipeline Register
     //--------------------------------------------------
-    if_id if_id_inst (
+    if_id_pipeline if_id_inst (
         .clk       (clk),
         .rst       (rst),
         .stall     (stall),
