@@ -1,0 +1,280 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2025 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[07:29:39.336881] Configured Lic search path (25.01-s002): /home/user19/Desktop/licenses/cadence.dat
+
+Version: 25.11-s095_1, built Mon Aug 11 22:29:05 PDT 2025
+Options: -files run_genus.tcl 
+Date:    Tue Jun 23 07:29:39 2026
+Host:    localhost.localdomain (x86_64 w/Linux 4.18.0-553.el8_10.x86_64) (4cores*8cpus*1physical cpu*11th Gen Intel(R) Core(TM) i5-11320H @ 3.20GHz 8192KB) (32432960KB)
+PID:     19342
+OS:      Rocky Linux 8.10 (Green Obsidian)
+
+Checking out license: Genus_Synthesis
+[07:29:39.298882] Periodic Lic check successful
+[07:29:39.823182] Feature usage summary:
+[07:29:39.823183] Genus_Synthesis  
+License checkout complete (0 seconds elapsed).
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (2 seconds elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (16 seconds elapsed).
+
+#@ Processing -files option
+@genus:root: 1> source run_genus.tcl
+#@ Begin verbose source ./run_genus.tcl
+@file(run_genus.tcl) 4: set_db init_hdl_search_path .
+  Setting attribute of root '/': 'init_hdl_search_path' = .
+@file(run_genus.tcl) 9: read_libs {
+    /home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/timing/slow_vdd1v0_basicCells.lib
+    /home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/timing/slow_vdd1v0_multibitsDFF.lib
+}
+
+  Message Summary for Library both libraries:
+  *******************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 49
+  *******************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow_vdd1v0_basicCells.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow_vdd1v0_multibitsDFF.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+@file(run_genus.tcl) 17: read_physical -lef {
+    /home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_tech.lef
+    /home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_macro.lef
+    /home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef
+}
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HV' has no resistance value.
+        : If this is the expected behavior, this message can be ignored.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_NH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_SH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_VV' has no resistance value.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'PHYS-129'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF2RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF2RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF2X1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF2X2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF4RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF4RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF4X1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'DFF4X2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SDFF2RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SDFF2RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SDFF4RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SDFF4RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SPDFF2RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SPDFF2RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SPDFF4RX1' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+Warning : Duplicate macro definition. [PHYS-107]
+        : Macro 'SPDFF4RX2' is already defined. Ignoring this definition in file '/home/user19/Documents/Cadence/gsclib045_all_v4.8/gsclib045/lef/gsclib045_multibitsDFF.lef'.
+
+  According to lef_library, there are total 11 routing layers [ V(5) / H(6) ]
+
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL1 cannot be found in library.
+        : Ensure that the proper library files are available and have been imported.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL16 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL32 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL4 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL64 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL8 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FSWNX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FSWX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWDNX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWDX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWNX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOHLDX1_OFF cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOHLDX1_ON cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOHX1_OFF cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOHX1_ON cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOLX1_OFF cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISOLX1_ON cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell ISONLX1_OFF cannot be found in library.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'PHYS-279'.
+@file(run_genus.tcl) 26: read_hdl -sv -f rtl.f
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Packages/cpu_types_pkg.sv'.
+        : The specified file could not be opened.  Check the value of the init_hdl_search_path attribute.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_1_IF/pc.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_1_IF/pc4.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_1_IF/if_id_pipeline.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_1_IF/if_stage.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/instruction_decode.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/imm_gen.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/main_control_unit.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/alu_control.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/reg_file.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/id_ex_pipeline.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_2_ID/id_stage.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/alu_mux.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/alu.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/branch_control_unit.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/branch_target_gen.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/ex_mem_pipeline.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_3_EX/ex_wrapper.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_4_MEM/mem_stage.sv'.
+Warning : Cannot open file. [VLOGPT-650]
+        : File '../Stage_4_MEM/mem_wb_pipeline.sv'.
+Warning : Maximum message print count reached. [MESG-11]
+        : Maximum print count of '20' reached for message 'VLOGPT-650'.
+@file(run_genus.tcl) 28: elaborate cpu_top_wrapper
+  Libraries have 324 usable logic and 128 usable sequential lib-cells.
+Error   : Could not find an HDL design. [CDFG-210] [elaborate]
+        : The design is 'cpu_top_wrapper'.
+        : This error may happen if you read a set of files, and you try to elaborate a design which description is not part of the files read. To fix this, check the name of the design you want to elaborate, or check if you have read all the expected RTL files.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+#@ End verbose source ./run_genus.tcl
+1
+Encountered problems processing file: run_genus.tcl
+WARNING: This version of the tool is 314 days old.
+@genus:root: 2> exit
+
+Lic Summary:
+[07:31:32.001360] Cdslmd servers: /home/user19/Desktop/licenses/cadence.dat
+[07:31:32.016512] Feature usage summary:
+[07:31:32.062639]  Genus_Synthesis 
+Normal exit.
